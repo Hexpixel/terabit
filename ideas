@@ -1,0 +1,40 @@
+things that I want to implement
+
+idea 1)
+
+create the window as a grid
+
+idea 2)
+
+when cursor hovers over brick, highlight the brick in WHITE and have it flash.
+
+idea 3)
+
+make the floor breakable
+- when block is HIT, break the block
+- have particles that show the block broke
+  
+idea 4)
+	BRAINSTORM sprite ideas
+  create an actuall sprite (one that doesn't look like at hot dog)
+  - maybe something 8-bit?
+  
+  
+  
+~~LONGTERM:
+
+a changelog
+
+a website
+
+an inventory
+
+character animations
+
+a fully working procedural terrain generation
+
+enemy AI
+
+species with life cycle
+
+game music based slightly off of some peaceful Breath of the Wild music
