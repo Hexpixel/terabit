@@ -30,23 +30,6 @@ pygame.display.set_caption('ver. 1.00')
 frames_per_second = 500
 
 
-class Block(pygame.sprite.Sprite):
-    def __init(self, sprite_color = WHITE, width = 64, height = 64):
-        super(Block, self).__init__()
-        self.image = pygame.Surface((width, height))
-        self.image.fill(WHITE)
-        self.rect = self.image.get_rect()
-
-# keeps track of how many sprites we're dealing with
-block_group = pygame.sprite.Group()
-
-a_block = Block()
-block_group.add(a_block)
-
-block_group.draw(game_display)
-
-
-
 # defines the display surface:
 
 # this commented code below this line is already assigned above somewhere.
@@ -77,7 +60,7 @@ def pause():
         events()
         key_arrow_pressed = pygame.key.get_pressed()
         # this breaks the pause function allowing the game to start as long as the 'ENTER' key is pressed.
-        if key_arrow_pressed[K_RETURN]:
+        if key_arrow_pressed[K_ESCAPE]:
             break
 
 # wait for video/game intro to start up
@@ -87,7 +70,7 @@ pause()
 
 # this is the main loop.
 while True:
-    # while loop that falls on on events,
+    # while loop that falls on events,
     events()
 
     # updates the display as well.
