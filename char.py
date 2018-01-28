@@ -6,6 +6,23 @@ import pygame
 import main
 
 
+
+class Block(pygame.sprite.Sprite):
+    def __init(self, sprite_color = WHITE, width = 64, height = 64):
+        super(Block, self).__init__()
+        self.image = pygame.Surface((width, height))
+        self.image.fill(WHITE)
+        self.rect = self.image.get_rect()
+
+    # keeps track of how many sprites we're dealing with
+    block_group = pygame.sprite.Group()
+
+    a_block = Block()
+    block_group.add(a_block)
+
+    block_group.draw(game_display)
+
+
 class Char():
     # two parameters we need are MaxJumpRange and velocity.
     def __init__(self, velocity, MaxJumpRange):
