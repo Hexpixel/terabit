@@ -1,3 +1,4 @@
+"""
 import pygame
 import math, random, sys
 from pygame.locals import *
