@@ -76,5 +76,5 @@ while True:
     # updates the display as well.
     pygame.display.update()
     timer.tick(frames_per_second)
-    game_display.fill(BLACK)
+    game_display.fill(BLUE)
     char.P.do()
