@@ -1,8 +1,9 @@
 """
 character class
 """
-import pygame
 
+#imports
+import pygame
 import main
 
 
@@ -13,7 +14,9 @@ class Block(pygame.sprite.Sprite):
         self.image = pygame.Surface((width, height))
         self.image.fill(WHITE)
         self.rect = self.image.get_rect()
-
+      
+    # the following code is for dealing with multiple sprites so that when we create multiple sprites we have this code so later down the road
+    # we don't run into things conflicting this.
     # keeps track of how many sprites we're dealing with
     block_group = pygame.sprite.Group()
 
