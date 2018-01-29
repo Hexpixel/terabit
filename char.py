@@ -78,21 +78,21 @@ class Char():
                 else:
                     self.y += self.velocity
 
-            def draw(self):
-                display = pygame.display.get_surface()
-                pygame.draw.circle(display, main.WHITE, (self.x, self.y - 25), 25, 0)
-
-            def do(self):
-                self.keys()
-                self.move()
-                self.draw()
+    def draw(self):
+        display = pygame.display.get_surface()
+        pygame.draw.circle(display, main.WHITE, (self.x, self.y - 25), 25, 0)
+                
+    def do(self):
+        self.keys()
+        self.move()
+        self.draw()
 
 P = Char(3, 50)
 P.setLocation(main.height_width, 0)
-
 
 # main loop
 
 while True:
 
     P.do()
+    
