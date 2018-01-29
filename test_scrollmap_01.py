@@ -1,6 +1,5 @@
-"""
-import math, random, sys
 import pygame
+import math, random, sys
 from pygame.locals import *
 
 
@@ -81,4 +80,4 @@ while True:
     pygame.display.update()
     CLOCK.tick(FPS)
     DS.fill(BLACK)
-"""
+    
