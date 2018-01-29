@@ -8,7 +8,7 @@ import main
 
 
 class Block(pygame.sprite.Sprite):
-    def __init(self, sprite_color = WHITE, width = 64, height = 64):
+    def __init__(self, sprite_color = WHITE, width = 64, height = 64):
         super(Block, self).__init__()
         self.image = pygame.Surface((width, height))
         self.image.fill(WHITE)
