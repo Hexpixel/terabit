@@ -1,7 +1,12 @@
 """
-import math, random, sys
+window scrolling python script
+"""
+
+# imports
 import pygame
+import math, random, sys
 from pygame.locals import *
+
 
 
 # exit the program
@@ -76,6 +81,5 @@ while True:
 
     pygame.display.update()
     CLOCK.tick(FPS)
-    DS.fill(BLACK)
-
-"""
+    DS.fill(BLUE)
+    
