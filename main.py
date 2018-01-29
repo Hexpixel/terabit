@@ -27,7 +27,7 @@ display_height = 600
 game_display = pygame.display.set_mode((display_width, display_height))
 # sets the game window's left hand upper corner caption
 pygame.display.set_caption('ver. 1.00')
-frames_per_second = 500
+frames_per_second = 60
 
 
 # defines the display surface:
