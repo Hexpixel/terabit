@@ -5,6 +5,11 @@ additional credits: TheGreatRambler
 
 import pygame
 import pyglet
+import math
+import noise
+
+# Do this --> pip install OpenSimplex
+
 import random
 import platformer_main
 
@@ -37,23 +42,18 @@ tile_map = [
 
 def return_terrain():
     # make an empty array:
+
+    terrainnoise = OpenSimplex(seed=random.random())
+
     terrain_array = []
 
     """ for loop for procedural terrain generation. """
-    for random_platform in range(0, 10):
-        # Put random platforms in game - first two values is the width and height (I think?).
-        elementtoconsider = [200, 5, random.randrange(0, platformer_main.SCREEN_WIDTH), random.randrange(0, platformer_main.SCREEN_HEIGHT)]
+    for xval in range(0, platformer_main.SCREEN_WIDTH):
+        height = math.floor((platformer_main.SCREEN_HEIGHT / 2) * (terrainnoise.noise2d(x=xval, y=0) + 1))
+        element = [1, height, xval, platformer_main.SCREEN_HEIGHT - height]
+        terrain_array.append(element)
 
-        addtoarray = True
-        # makes sure the terrain doesn't collide with other terrain.
-        for lengthindex in range(0, len(terrain_array)):
-            item = terrain_array[lengthindex]
-            if item[2] < elementtoconsider[2] and item[2] + item[0] > elementtoconsider[2] + elementtoconsider[0] and item[3] < elementtoconsider[3] and item[3] + item[1] > elementtoconsider[3] + elementtoconsider[1]:
-                    addtoarray = False
-            if addtoarray:
-                terrain_array.append(elementtoconsider)
-
-        return terrain_array
+    return terrain_array
 
 # call this in platformer_main.py
 # return_terrain()
