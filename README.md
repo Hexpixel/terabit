@@ -1,2 +1,2 @@
-# terraingame
-terrain game repo
+# terabit
+terabit game repo
