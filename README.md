@@ -1,2 +1,2 @@
-# terabit
+# pre-alpha
 terabit game repo
