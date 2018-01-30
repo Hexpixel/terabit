@@ -11,7 +11,7 @@ import noise
 # Do this --> pip install OpenSimplex
 
 import random
-import platformer_main
+import main
 
 # constants representing the different resources:
 GRASS = 0
@@ -48,12 +48,12 @@ def return_terrain():
     terrain_array = []
 
     """ for loop for procedural terrain generation. """
-    for xval in range(0, platformer_main.SCREEN_WIDTH):
-        height = math.floor((platformer_main.SCREEN_HEIGHT / 2) * (terrainnoise.noise2d(x=xval, y=0) + 1))
-        element = [1, height, xval, platformer_main.SCREEN_HEIGHT - height]
+    for xval in range(0, main.SCREEN_WIDTH):
+        height = math.floor((main.SCREEN_HEIGHT / 2) * (terrainnoise.noise2d(x=xval, y=0) + 1))
+        element = [1, height, xval, main.SCREEN_HEIGHT - height]
         terrain_array.append(element)
 
     return terrain_array
 
-# call this in platformer_main.py
+# call this in main.py
 # return_terrain()
