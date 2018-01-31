@@ -71,7 +71,7 @@ def main():
     for f in range(math.floor(gettopcorner()[0]), math.floor(gettopcorner()[0]) * -1):
         terrainforelement = terrainnoise.noise2d(x = f / frequency, y = 0)
         for g in range(0, math.floor((terrainforelement + 1) * 10)):
-            drawsquare(-f, -g + 10, GREEN)
+            drawsquare(-f, -g + 59, GREEN)
 
     while True:
         for event in pygame.event.get():
