@@ -1,30 +1,25 @@
 """
-character class
+this is the character class.
+sprites are not included in this script.
 """
 
-#imports
+# imports
 import pygame
 import main
+import testdata
 
-
+WHITE = (255, 255, 255),
+BLACK = (0, 0, 0),
+RED = (255, 0, 0),
+GREEN = (63, 163, 47),
+BLUE = (131, 177, 255)
 
 class Block(pygame.sprite.Sprite):
-    def __init__(self, sprite_color = WHITE, width = 64, height = 64):
+    def __init__(self, sprite_color=WHITE, width=64, height=64):
         super(Block, self).__init__()
         self.image = pygame.Surface((width, height))
         self.image.fill(WHITE)
         self.rect = self.image.get_rect()
-      
-    # the following code is for dealing with multiple sprites so that when we create multiple sprites we have this code so later down the road
-    # we don't run into things conflicting this.
-    # keeps track of how many sprites we're dealing with
-    block_group = pygame.sprite.Group()
-
-    a_block = Block()
-    block_group.add(a_block)
-
-    block_group.draw(game_display)
-
 
 class Char():
     # two parameters we need are MaxJumpRange and velocity.
@@ -42,22 +37,23 @@ class Char():
         # what self.xVelocity does is if we press the right key,
         self.xVelocity = 0
         self.jumping = False
-        #keeps track of our progress while we're jumping.
+        # keeps track of our progress while we're jumping.
         self.jumpCounter = 0
         self.falling = True
 
     def keys(self):
-    # REMEMBER: this is a local variable to this function and this class. DOES NOT affect its twin variable.
-        key_arrow_pressed = pygame.get.key_pressed()
+        # REMEMBER: this is a local variable to this function and this class. DOES NOT affect its twin variable.
+        key_arrow_pressed = pygame.key.get_pressed()
         # this makes the player look like its moving left
-        if key_arrow_pressed[pygame.key.left]:
+        if key_arrow_pressed[pygame.K_LEFT]:
             self.xVelocity = -self.velocity
-        elif key_arrow_pressed[pygame.key.right]:
+        elif key_arrow_pressed[pygame.K_RIGHT]:
             self.xVelocity = self.velocity
-        else: self.xVelocity = 0
+        else:
+            self.xVelocity = 0
 
         # checks if the values up above are True
-        if key_arrow_pressed[pygame.key.up] and not self.falling:
+        if key_arrow_pressed[pygame.K_UP] and not self.falling:
             self.jumping = True
             self.jumpCounter = 0
 
@@ -81,18 +77,18 @@ class Char():
     def draw(self):
         display = pygame.display.get_surface()
         pygame.draw.circle(display, main.WHITE, (self.x, self.y - 25), 25, 0)
-                
+
     def do(self):
         self.keys()
         self.move()
         self.draw()
 
+
 P = Char(3, 50)
-P.setLocation(main.height_width, 0)
+P.setLocation(testdata.SCREEN_WIDTH, 0)
 
 # main loop
 
 while True:
-
     P.do()
     
