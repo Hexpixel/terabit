@@ -1,3 +1,8 @@
+"""
+procedural terrain generation
+scripted by: TheGreatRambler and Terapixel :D
+"""
+
 import math
 import pygame
 from opensimplex import OpenSimplex
