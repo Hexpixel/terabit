@@ -1,4 +1,4 @@
-# 0.0.9a
+# 0.0.6a
 first offically numbered version.
 
 terabit game repo
