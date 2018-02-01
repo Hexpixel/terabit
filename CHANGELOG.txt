@@ -1,2 +1,15 @@
+# 0.0.6a
+first ofically numbered version.
+
+includes: 
+
+game stability increase
+
+simple terrain algorithm
+
+- run the game to generate a random terrain
+
+
+# 0.0.7a
 
 
