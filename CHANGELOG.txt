@@ -1,7 +1,7 @@
-# 0.0.6a
+ver. 0.0.6a
 first ofically numbered version.
 
-includes: 
+general: 
 
 game stability increase
 
@@ -10,6 +10,6 @@ simple terrain algorithm
 - run the game to generate a random terrain
 
 
-# 0.0.7a
+# ver. 0.0.7a
 
 
