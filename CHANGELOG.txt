@@ -1,5 +1,5 @@
 ver. 0.0.6a
-first ofically numbered version.
+(first ofically numbered game version)
 
 general: 
 
@@ -9,7 +9,38 @@ simple terrain algorithm
 
 - run the game to generate a random terrain
 
+controls:
 
-# ver. 0.0.7a
+move around with 'WASD' keys
+
+adjust the window to fullscreen or 800x600 pixels
 
 
+
+ver. 0.0.7a
+
+general:
+
+tweaked terrain
+
+added title screen
+
+controls: 
+
+hit the 'SPACE' key to jump
+
+
+
+ver 0.0.8
+
+ver 0.0.9
+
+ver 0.0.10
+
+ver 0.0.11
+
+ver 0.0.12
+
+ver 0.0.13
+
+ver 0.0.14
