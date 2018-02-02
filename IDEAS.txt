@@ -1,20 +1,25 @@
-things that I want to implement
+Game ideas by Terapixel
 
-idea 1)
+feel free to email me for suggestionsa :)
+
+
+things that I want to have implemented in the game:
+
+idea No. 1)
 
 create the window as a grid
 
-idea 2)
+idea No. 2)
 
 when cursor hovers over brick, highlight the brick in white and have it flash.
 
-idea 3)
+idea No. 3)
 
 make the floor breakable
 - when block is HIT, break the block
 - have particles that show the block broke
   
-idea 4)
+idea No. 4)
 	BRAINSTORM sprite ideas
   create an actuall sprite (one that doesn't look like at hot dog)
   - maybe something 8-bit?
@@ -23,18 +28,22 @@ idea 4)
   
 ~~LONGTERM:
 
-a changelog
+a changelog (*already made one*)
 
-a website
+a patcher for Windows 10 + (and possibly windows xp and vista since TheGreatRambler has a 15 year old computer)
 
-an inventory
+a website (*unconfirmed* / *most likely not happening*)
 
-character animations
+an inventory (*unconfirmed*)
 
-a fully working procedural terrain generation
+character animation
 
-enemy AI
+a fully working procedural terrain generation (already done)
 
-species with life cycle
+enemy and creature AI
 
-game music based slightly off of some peaceful Breath of the Wild music
+species with life cycle (which falls into the enemy and creature AI catagory)
+
+8-bit OR 16-bit game music inspired by some Breath of the Wild music (not sure how far I'll go with this since I have no idea how legal this would be to its fullest extent - DARN YOU NINTENDO)
+
+
