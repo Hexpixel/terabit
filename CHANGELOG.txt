@@ -2,7 +2,7 @@ game changelog including game history by Terapixel
 
 
 
-ver. 0.0.6a
+ver. 0.0.6
 (first ofically numbered game version)
 
 general: 
@@ -21,7 +21,7 @@ adjust the window to fullscreen or 800x600 pixels
 
 
 
-ver. 0.0.7a
+ver. 0.0.7
 
 general:
 
@@ -48,3 +48,31 @@ ver 0.0.12
 ver 0.0.13
 
 ver 0.0.14
+
+pre-alpha phase --
+
+ver 0.1.1
+
+ver 0.1.2
+
+ver 0.1.3
+
+ver 0.1.4
+
+ver 0.1.5
+
+ver 0.1.6
+
+alpha 1 phase ---
+
+alpha 2 phase --
+
+aplha 3 phase (unconfirmed) --
+
+early beata phase --
+
+beta 1
+
+beta 2
+
+officail release 1.0
