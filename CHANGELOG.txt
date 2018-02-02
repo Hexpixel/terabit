@@ -49,7 +49,8 @@ ver 0.0.13
 
 ver 0.0.14
 
-pre-alpha phase --
+
+pre-alpha (unconfirmed) --
 
 ver 0.1.1
 
@@ -63,7 +64,8 @@ ver 0.1.5
 
 ver 0.1.6
 
-alpha 1 phase ---
+
+alpha 1 (unconfirmed) --
 
 ver 0.2.1
 
@@ -73,23 +75,32 @@ ver 0.2.3
 
 ver 0.2.4
 
-alpha 2 phase --
+alpha 2 (unconfirmed) --
 
-ver
+alpha 2.0.0
+alpha 2.0.1
 
-ver
+aplha 3 (unconfirmed) --
 
-ver
+alpha 3.0.0
+alpha 3.0.1
 
-aplha 3 phase (unconfirmed) --
+early beata (unconfirmed) --
 
-early beata phase --
+beta 1 (unconfirmed) --
 
-beta 1
+beta 1.0.0
 
-beta 2
+beta 2 (unconfirmed) --
 
+beta 2.0.0
 
+beta 3 (unconfirmed) --
+
+beta 3.0.0
+beta 3.0.1
+
+-----------------------------------------
 
 officail game release 1.0 (unconfirmed) --
 
