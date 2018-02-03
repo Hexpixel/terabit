@@ -1,13 +1,25 @@
 """
+terabit game ver. 0.0.6a
+
+>>MIT License
+
+includes:
+
 procedural terrain generation
 scripted by: TheGreatRambler and Terapixel :D
 """
 
-import math
+# imports
+
 import pygame
+import sys
+import math
 from opensimplex import OpenSimplex
 import random
-import time
+
+
+
+# defines some colors
 
 WHITE = (255, 255, 255),
 BLACK = (0, 0, 0),
@@ -15,33 +27,59 @@ RED = (255, 0, 0),
 GREEN = (63, 163, 47),
 BLUE = (131, 177, 255)
 
-# expand this value to make terrain less "pointy"
+# this command initializes the game
+pygame.init()
+
+# expand this value to make terrain less 'pointy'
 frequency = 20
 
-# Screen dimensions
+# Screen dimensions settings
+
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 
-# block dimensions
+
+# height width and height height
+
+HEIGHT_WIDTH = SCREEN_WIDTH / 2
+HEIGHT_HEIGHT = SCREEN_HEIGHT / 2
+
+# area
+
+AREA = SCREEN_WIDTH * SCREEN_HEIGHT
+
+""" code to make the game run on your current machine's screen size """
+
+# Make fullscreen
+#infoObject = pygame.display.Info()
+
+#SCREEN_WIDTH = infoObject.current_w
+#SCREEN_HEIGHT = infoObject.current_h
+
+# terrain block dimensions
+
 BLOCK_WIDTH = 5
 BLOCK_HEIGHT = 5
 
-# initializes the game
-pygame.init()
+# this command sets a game clock
 
-#sets a game clock
 timer = pygame.time.Clock()
-display_width = 800
-display_height = 600
+
 
 # sets the width and height of the screen display / screen window
+
 game_display = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
 # sets the game window's left hand upper corner caption
-pygame.display.set_caption('terabit pre-alpha')
-frames_per_second = 60
+
+pygame.display.set_caption('terabit ver. 0.0.6')
+
+# frames per second - increase this value to have smoother game play... note to TheGreatRambler: wouldn't advise this for Windows Vista users kek :P
+
+frames_per_second = 120
 
 # player x and y
+
 playerx = 0
 playery = 0
 
@@ -69,22 +107,29 @@ def draw():
     pygame.display.update()
     timer.tick(frames_per_second)
 
+
+# main function
 def main():
-    print("Hello")
-    pygame.init()
+    print("Hello!")
+    print("Do you like code easter eggs?  Cause' I sure do...")
+    print("This is a nice little code easter egg for people who manage to steal this code from me.  By the way, you are now going to die ;)")
     game_display.fill(BLUE)
     for f in range(math.floor(gettopcorner()[0]), math.floor(gettopcorner()[0]) * -1):
         terrainforelement = terrainnoise.noise2d(x = f / frequency, y = 0)
         for g in range(0, math.floor((terrainforelement + 1) * 10)):
-            drawsquare(-f, -g + 59, GREEN)
+            drawsquare(-f, -g + 58, GREEN)
 
+
+# while loop must go inside main() function.
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
+                sys.exit()
                 quit()
 
-        pygame.display.update()
+            pygame.display.update()
+
 
 if __name__ == "__main__":
     main()
