@@ -110,9 +110,6 @@ def draw():
 
 # main function
 def main():
-    print("Hello!")
-    print("Do you like code easter eggs?  Cause' I sure do...")
-    print("This is a nice little code easter egg for people who manage to steal this code from me.  By the way, you are now going to die ;)")
     game_display.fill(BLUE)
     for f in range(math.floor(gettopcorner()[0]), math.floor(gettopcorner()[0]) * -1):
         terrainforelement = terrainnoise.noise2d(x = f / frequency, y = 0)
