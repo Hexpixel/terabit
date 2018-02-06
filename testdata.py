@@ -108,7 +108,7 @@ def draw():
     timer.tick(frames_per_second)
 
 
-# main function
+# main code
 def main():
     game_display.fill(BLUE)
     for f in range(math.floor(gettopcorner()[0]), math.floor(gettopcorner()[0]) * -1):
@@ -130,3 +130,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
