@@ -4,7 +4,7 @@ the main purpose for having this CHANGELOG.txt is to keep track of what was once
 every game version above ver 0.0.1 is unconfirmed and
 
 ver 0.0.1 -- (currently planning out)
-(first ofically numbered game version)
+(first officially numbered game version)
 
 general: 
 
