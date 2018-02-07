@@ -134,8 +134,6 @@ class player:
         pygame.display.update()
 
     def draw(self):
-        #display = pygame.display.get_surface()
-        #pygame.draw.circle(display, WHITE, (int(self.x), int(self.y - 25)), 25, 0)
         playerimage = pygame.image.load('friendly creature.png')
         screen.blit(playerimage, (playerx, playery))
         pygame.display.update()
