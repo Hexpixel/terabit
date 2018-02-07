@@ -133,19 +133,21 @@ class player:
                 self.y += self.velocity
         pygame.display.update()
 
-    def get_png(self):
+    def draw(self):
         image = pygame.image.load('friendly creature.png')
-        if image.get_alpha is None:
-            image = image.convert()
-        else:
-            image = image.convert_alpha()
-        return image
+        
+        width = 0
+        
+        pygame.get_rect()
+        pygame.draw.rect(self, game_display, WHITE, width)
+        
+        timer.tick(frames_per_second)
         pygame.display.update()
     
     def do(self):
         self.keys()
         self.move()
-        self.get_png()
+        self.draw()
         pygame.display.update()
 
 P = player(3, 50)
@@ -161,7 +163,9 @@ def main():
             drawsquare(-f, -g + 58, GREEN)
     pygame.display.update()
 
-#---Main loop---
+    
+    
+# main loop
     running = True
     while running:
         timer.tick(frames_per_second)
