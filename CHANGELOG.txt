@@ -2,7 +2,7 @@ game changelog including game history by Terapixel
 
 
 
-ver. 0.0.1
+ver. 0.0.1 -- (currently planning out)
 (first ofically numbered game version)
 
 general: 
