@@ -133,16 +133,20 @@ class player:
                 self.y += self.velocity
         pygame.display.update()
 
-    def draw(self, width, height, x, y, thickness):
-        playersprites = pygame.sprite.Group()
-        pygame.draw.rect(screen, color, (x, y, width, height), thickness)
+    def get_png(self):
+        image = pygame.image.load('friendly creature.png')
+        if image.get_alpha is None:
+            image = image.convert()
+        else:
+            image = image.convert_alpha()
+        return image
         pygame.display.update()
-        
+    
     def do(self):
         self.keys()
         self.move()
-        self.draw()
-        pygame.display()
+        self.get_png()
+        pygame.display.update()
 
 P = player(3, 50)
 P.setLocation(HEIGHT_WIDTH, 0)
@@ -160,7 +164,7 @@ def main():
 #---Main loop---
     running = True
     while running:
-        clock.tick(fps)
+        timer.tick(frames_per_second)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
