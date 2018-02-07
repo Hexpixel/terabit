@@ -134,7 +134,7 @@ class player:
         pygame.display.update()
 
     def draw(self, width, height, x, y, thickness):
-       
+        playersprites = pygame.sprite.Group()
         pygame.draw.rect(screen, color, (x, y, width, height), thickness)
         pygame.display.update()
         
@@ -157,15 +157,27 @@ def main():
             drawsquare(-f, -g + 58, GREEN)
     pygame.display.update()
 
-
-    while True:
+#---Main loop---
+    running = True
+    while running:
+        clock.tick(fps)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
+                running = False
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                running = False
                 pygame.quit()
                 quit()
-
-            P.do()
-            pygame.display.update()
+                
+           P.do()
+        
+    screen.fill(BLUE)
+    screen.blit((131, 177, 255))
+    playersprites.clear(game_display)
+    playersprites.update()
+    playersprites.draw(game_display)
+    pygame.display.update()
 
 if __name__ == "__main__":
     main()
+    
