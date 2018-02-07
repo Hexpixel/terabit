@@ -1,5 +1,5 @@
 """
-terabit game ver. 0.0.6a
+terabit game ver. 0.0.1
 
 >>MIT License
 
@@ -72,7 +72,7 @@ game_display = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
 # sets the game window's left hand upper corner caption
 
-pygame.display.set_caption('terabit ver. 0.0.6')
+pygame.display.set_caption('terabit ver. 0.0.1')
 
 # frames per second - increase this value to have smoother game play... note to TheGreatRambler: wouldn't advise this for Windows Vista users kek :P
 
@@ -93,19 +93,89 @@ def returnarrayindex(xvalue, yvalue):
     y = yvalue * 2 if yvalue >= 0 else yvalue * -2 - 1
     number = (x * x + x + y) if (x >= y) else (y * y + x)
     return number
+    pygame.display.update()
 
 def gettopcorner():
     return [playerx - (SCREEN_WIDTH / 2) / BLOCK_WIDTH, playery - (SCREEN_HEIGHT / 2) / BLOCK_HEIGHT]
+    pygame.display.update()
 
 def drawsquare(x, y, texture):
     topcornerdata = gettopcorner()
     dataforsquare = ((x - topcornerdata[0]) * BLOCK_WIDTH, (y - topcornerdata[1]) * BLOCK_HEIGHT, BLOCK_WIDTH, BLOCK_HEIGHT)
     width = 0
     pygame.draw.rect(game_display, texture, dataforsquare, width)
+    pygame.display.update()
 
 def draw():
     pygame.display.update()
     timer.tick(frames_per_second)
+
+
+
+class player:
+    def __init__(self, velocity, maxJumpRange):
+        self.velocity = velocity
+        self.maxJumpRange = maxJumpRange
+        pygame.display.update()
+
+    def setLocation(self, x, y):
+        self.x = x
+        self.y = y
+        self.xVelocity = 0
+        self.jumping = False
+        self.jumpCounter = 0
+        self.falling = True
+        pygame.display.update()
+
+    def keys(self):
+        k = pygame.key.get_pressed()
+
+        if k[pygame.K_a]:
+                self.xVelocity = -self.velocity
+        elif k[pygame.K_d]:
+                self.xVelocity = self.velocity
+        else:
+            self.xVelocity = 0
+
+        if k[pygame.K_w] and not self.jumping and not self.falling:
+            self.jumping = True
+            self.jumpCounter = 0
+        pygame.display.update()
+
+    def move(self):
+        self.x += self.xVelocity
+        # check x boundries
+
+        if self.jumping:
+            self.y -= self.velocity
+            self.jumpCounter += 1
+            if self.jumpCounter == self.maxJumpRange:
+                self.jumping = False
+                self.falling = True
+        elif self.falling:
+            if self.y <= SCREEN_HEIGHT - 10 and self.y + self.velocity >= SCREEN_HEIGHT - 10:
+                self.y = SCREEN_HEIGHT - 10
+                self.falling = False
+            else:
+                self.y += self.velocity
+        pygame.display.update()
+
+    def draw(self):
+        self.size = (50, 50)
+        rect = pygame.Rect((self.x, self.y), self.size)
+        pygame.draw.rect(game_display, WHITE, rect)
+        pygame.display.update()
+
+    def do(self):
+        self.keys()
+        self.move()
+        self.draw()
+        pygame.display.update()
+
+
+P = player(3, 50)
+P.setLocation(HEIGHT_WIDTH, 0)
+
 
 
 # main code
@@ -115,18 +185,39 @@ def main():
         terrainforelement = terrainnoise.noise2d(x = f / frequency, y = 0)
         for g in range(0, math.floor((terrainforelement + 1) * 10)):
             drawsquare(-f, -g + 58, GREEN)
+    pygame.display.update()
 
 
-# while loop must go inside main() function.
-    while True:
+
+    # while loop must go inside main() function.
+
+    done = False
+    while not done:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-                quit()
+                done = True
 
-            pygame.display.update()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_a:
+                    player.go_left()
+                if event.key == pygame.K_d:
+                    player.go_right()
+                if event.key == pygame.K_SPACE:
+                    player.jump()
 
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_a and player.change_x < 0:
+                    player.stop()
+                if event.key == pygame.K_d and player.change_x > 0:
+                    player.stop()
+
+        timer.tick(frames_per_second)
+
+        pygame.display.update()
+
+    pygame.quit()
+    sys.exit()
+    quit()
 
 if __name__ == "__main__":
     main()
