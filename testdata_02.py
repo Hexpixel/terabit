@@ -133,9 +133,9 @@ class player:
                 self.y += self.velocity
         pygame.display.update()
 
-    def draw(self):
-        playerimage = pygame.image.load('friendly creature.png')
-        screen.blit(playerimage, (playerx, playery))
+    def draw(self, width, height, x, y, thickness):
+       
+        pygame.draw.rect(screen, color, (x, y, width, height), thickness)
         pygame.display.update()
         
     def do(self):
