@@ -89,6 +89,7 @@ class player:
     def __init__(self, velocity, maxJumpRange):
         self.velocity = velocity
         self.maxJumpRange = maxJumpRange
+        pygame.display.update()
 
     def setLocation(self, x, y):
         self.x = x
@@ -97,6 +98,7 @@ class player:
         self.jumping = False
         self.jumpCounter = 0
         self.falling = True
+        pygame.display.update()
 
     def keys(self):
         k = pygame.key.get_pressed()
@@ -111,6 +113,7 @@ class player:
         if k[pygame.K_UP] and not self.jumping and not self.falling:
             self.jumping = True
             self.jumpCounter = 0
+        pygame.display.update()
 
     def move(self):
         self.x += self.xVelocity
@@ -128,16 +131,20 @@ class player:
                 self.falling = False
             else:
                 self.y += self.velocity
+        pygame.display.update()
 
     def draw(self):
-        display = pygame.display.get_surface()
-        pygame.draw.circle(display, WHITE, (int(self.x), int(self.y - 25)), 25, 0)
-
+        #display = pygame.display.get_surface()
+        #pygame.draw.circle(display, WHITE, (int(self.x), int(self.y - 25)), 25, 0)
+        playerimage = pygame.image.load('friendly creature.png')
+        screen.blit(playerimage, (playerx, playery))
+        pygame.display.update()
+        
     def do(self):
         self.keys()
         self.move()
         self.draw()
-
+        pygame.display()
 
 P = player(3, 50)
 P.setLocation(HEIGHT_WIDTH, 0)
@@ -150,6 +157,7 @@ def main():
         terrainforelement = terrainnoise.noise2d(x = f / frequency, y = 0)
         for g in range(0, math.floor((terrainforelement + 1) * 10)):
             drawsquare(-f, -g + 58, GREEN)
+    pygame.display.update()
 
 
     while True:
