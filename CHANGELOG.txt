@@ -2,38 +2,26 @@ game changelog including game history by Terapixel
 
 
 
-ver. 0.0.6
+ver. 0.0.1
 (first ofically numbered game version)
 
 general: 
 
-game stability increase
-
-simple terrain algorithm
-
-- run the game to generate a random terrain
-
 controls:
 
-move around with 'WASD' keys
-
-adjust the window to fullscreen or 800x600 pixels
 
 
+ver 0.0.2
 
-ver. 0.0.7
+ver 0.0.3
 
-general:
+ver 0.0.4
 
-tweaked terrain
+ver 0.0.5
 
-added title screen
+ver 0.0.6
 
-controls: 
-
-hit the 'SPACE' key to jump
-
-
+ver 0.0.7
 
 ver 0.0.8
 
@@ -45,9 +33,6 @@ ver 0.0.11
 
 ver 0.0.12
 
-ver 0.0.13
-
-ver 0.0.14
 
 
 pre-alpha (unconfirmed) --
@@ -65,6 +50,7 @@ ver 0.1.5
 ver 0.1.6
 
 
+
 alpha 1 (unconfirmed) --
 
 ver 0.2.1
@@ -75,25 +61,41 @@ ver 0.2.3
 
 ver 0.2.4
 
+
+
 alpha 2 (unconfirmed) --
 
 alpha 2.0.0
 alpha 2.0.1
+
+
 
 aplha 3 (unconfirmed) --
 
 alpha 3.0.0
 alpha 3.0.1
 
+
+
 early beata (unconfirmed) --
+
+
 
 beta 1 (unconfirmed) --
 
+
+
 beta 1.0.0
+
+
 
 beta 2 (unconfirmed) --
 
+
+
 beta 2.0.0
+
+
 
 beta 3 (unconfirmed) --
 
