@@ -1,8 +1,10 @@
 Purpose of the CHANGELOG.txt:
 
-Terapixel uses the CHANGELOG to provide a public documentation of the game's history.
-As you can see, the changelog also includes versions of the game that haven't yet been released.  but will be released in the distant future.
-Without further ado!  Enjoy :D
+- Terapixel uses the CHANGELOG to provide a public documentation of the game's history.
+
+- As you can see, the changelog also includes versions of the game that haven't yet been released.  but will be released in the distant future.
+
+- Without further ado, enjoy! :D
 
 every game version above ver 0.0.1 is unconfirmed and may not even happen
 
