@@ -1,5 +1,5 @@
 """
-this is the character class.
+this is the character script
 sprites are not included in this script.
 """
 
