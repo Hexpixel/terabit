@@ -1,8 +1,8 @@
-game changelog including game history documented by Terapixel
+Purpose of the CHANGELOG.txt:
 
-The purpose of the CHANGELOG.txt:
-
-this is to keep track of what was once there and what was then later changed in the game.
+Terapixel uses the CHANGELOG to provide a public documentation of the game's history.
+Furthur down the list, This also includes game versions that haven't come out yet but are most likely going to be released in the distant future.
+Without further ado!  Enjoy :D
 
 every game version above ver 0.0.1 is unconfirmed and may not even happen
 
