@@ -98,14 +98,14 @@ def returnarrayindex(xvalue, yvalue):
 def gettopcorner():
     return [playerx - (SCREEN_WIDTH / 2) / BLOCK_WIDTH, playery - (SCREEN_HEIGHT / 2) / BLOCK_HEIGHT]
     pygame.display.update()
-
+    
 def drawsquare(x, y, texture):
     topcornerdata = gettopcorner()
     dataforsquare = ((x - topcornerdata[0]) * BLOCK_WIDTH, (y - topcornerdata[1]) * BLOCK_HEIGHT, BLOCK_WIDTH, BLOCK_HEIGHT)
     width = 0
     pygame.draw.rect(game_display, texture, dataforsquare, width)
     pygame.display.update()
-
+    
 def draw():
     pygame.display.update()
     timer.tick(frames_per_second)
@@ -116,7 +116,6 @@ class player:
     def __init__(self, velocity, maxJumpRange):
         self.velocity = velocity
         self.maxJumpRange = maxJumpRange
-        pygame.display.update()
 
     def setLocation(self, x, y):
         self.x = x
@@ -125,7 +124,6 @@ class player:
         self.jumping = False
         self.jumpCounter = 0
         self.falling = True
-        pygame.display.update()
 
     def keys(self):
         k = pygame.key.get_pressed()
@@ -140,7 +138,6 @@ class player:
         if k[pygame.K_w] and not self.jumping and not self.falling:
             self.jumping = True
             self.jumpCounter = 0
-        pygame.display.update()
 
     def move(self):
         self.x += self.xVelocity
@@ -158,7 +155,6 @@ class player:
                 self.falling = False
             else:
                 self.y += self.velocity
-        pygame.display.update()
 
     def draw(self):
         self.size = (50, 50)
@@ -170,8 +166,6 @@ class player:
         self.keys()
         self.move()
         self.draw()
-        pygame.display.update()
-
 
 P = player(3, 50)
 P.setLocation(HEIGHT_WIDTH, 0)
