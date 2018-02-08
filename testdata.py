@@ -174,7 +174,11 @@ P.setLocation(HEIGHT_WIDTH, 0)
 
 # main code
 def main():
-    game_display.fill(BLUE)
+    game_display.blit(draw, (playerx, playery))
+    pygame.display.flip()
+    timer.tick(frames_per_second)
+    game_display.fill.(BLUE) # Add this to "clear" the screen.
+    
     for f in range(math.floor(gettopcorner()[0]), math.floor(gettopcorner()[0]) * -1):
         terrainforelement = terrainnoise.noise2d(x = f / frequency, y = 0)
         for g in range(0, math.floor((terrainforelement + 1) * 10)):
