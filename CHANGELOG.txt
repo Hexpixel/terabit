@@ -1,7 +1,10 @@
 game changelog including game history documented by Terapixel
 
-the main purpose for having this CHANGELOG.txt is to keep track of what was once there and what was then later changed.
-every game version above ver 0.0.1 is unconfirmed and
+The purpose of the CHANGELOG.txt:
+
+this is to keep track of what was once there and what was then later changed in the game.
+
+every game version above ver 0.0.1 is unconfirmed and may not even happen
 
 ver 0.0.1 -- (currently planning out)
 (first officially numbered game version)
