@@ -174,7 +174,7 @@ P.setLocation(HEIGHT_WIDTH, 0)
 
 # main code
 def main():
-    game_display.blit(draw, (playerx, playery))
+    game_display.blit() # not sure what arguments should be...
     pygame.display.flip()
     timer.tick(frames_per_second)
     game_display.fill.(BLUE) # Add this to "clear" the screen.
@@ -183,10 +183,9 @@ def main():
         terrainforelement = terrainnoise.noise2d(x = f / frequency, y = 0)
         for g in range(0, math.floor((terrainforelement + 1) * 10)):
             drawsquare(-f, -g + 58, GREEN)
-    pygame.display.update()
-
-
-
+            
+            
+            
     # while loop must go inside main() function.
 
     done = False
