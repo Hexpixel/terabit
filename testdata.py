@@ -127,7 +127,7 @@ class player:
         
     # player controls:
     
-    def go_up():
+    def go_up(self):
         uk = pygame.key.get_pressed()
         if uk[pygame.K_w]:
             self.jumping = True
@@ -135,8 +135,7 @@ class player:
             
     #def go_down(self):
        #dk = pygame.key.get_pressed()
-       #if dk[pygame.K_s]:
-            
+       #if dk[pygame.K_s]:     
     
     def go_right(self):
         rk = pygame.key.get_pressed()
@@ -148,20 +147,6 @@ class player:
         if lk = [pygame.K_a]:
             self.xVelocity = -self.velocity
             
-    #def keys(self):
-        #k = pygame.key.get_pressed()
-
-        #if k[pygame.K_a]:
-                #self.xVelocity = -self.velocity
-        #elif k[pygame.K_d]:
-                #self.xVelocity = self.velocity
-        #else:
-            #self.xVelocity = 0
-
-        #if k[pygame.K_w] and not self.jumping and not self.falling:
-            #self.jumping = True
-            #self.jumpCounter = 0
-
     def move(self):
         self.x += self.xVelocity
         # check x boundries
