@@ -130,18 +130,24 @@ class player:
     def go_up():
         uk = pygame.key.get_pressed()
         if uk[pygame.K_w]:
+            self.jumping = True
+            self.jumpCounter = 0
             
     def go_down(self):
        dk = pygame.key.get_pressed()
        if dk[pygame.K_s]:
+            
     
     def go_right(self):
         rk = pygame.key.get_pressed()
         if rk = [pygame.K_d]:
-        
+            self.xVelocity = self.velocity
+            
     def go_left(self):
         lk = pygame.key.get_pressed()
         if lk = [pygame.K_a]:
+            self.xVelocity = -self.velocity
+            
             
         
     def keys(self):
