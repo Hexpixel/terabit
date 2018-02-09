@@ -209,23 +209,20 @@ def main():
                     player.go_right()
                 if event.key == pygame.K_w:
                     player.go_up()
+                if event.key == pygame.K_q:
+                    pygame.quit()
+                    quit()
 
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_a and player.change_x < 0:
                     player.stop()
                 if event.key == pygame.K_d and player.change_x > 0:
                     player.stop()
-
-        timer.tick(frames_per_second)
-
-        pygame.display.update()
         
+        pygame.display.flip()
+        timer.tick(frames_per_second)
         P.do()
         
-    pygame.quit()
-    sys.exit()
-    quit()
-
 if __name__ == "__main__":
     main()
     
