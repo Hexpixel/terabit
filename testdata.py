@@ -219,7 +219,9 @@ def main():
         timer.tick(frames_per_second)
 
         pygame.display.update()
-
+        
+        P.do()
+        
     pygame.quit()
     sys.exit()
     quit()
