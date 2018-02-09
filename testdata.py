@@ -133,9 +133,9 @@ class player:
             self.jumping = True
             self.jumpCounter = 0
             
-    def go_down(self):
-       dk = pygame.key.get_pressed()
-       if dk[pygame.K_s]:
+    #def go_down(self):
+       #dk = pygame.key.get_pressed()
+       #if dk[pygame.K_s]:
             
     
     def go_right(self):
@@ -148,21 +148,19 @@ class player:
         if lk = [pygame.K_a]:
             self.xVelocity = -self.velocity
             
-            
-        
-    def keys(self):
-        k = pygame.key.get_pressed()
+    #def keys(self):
+        #k = pygame.key.get_pressed()
 
-        if k[pygame.K_a]:
-                self.xVelocity = -self.velocity
-        elif k[pygame.K_d]:
-                self.xVelocity = self.velocity
-        else:
-            self.xVelocity = 0
+        #if k[pygame.K_a]:
+                #self.xVelocity = -self.velocity
+        #elif k[pygame.K_d]:
+                #self.xVelocity = self.velocity
+        #else:
+            #self.xVelocity = 0
 
-        if k[pygame.K_w] and not self.jumping and not self.falling:
-            self.jumping = True
-            self.jumpCounter = 0
+        #if k[pygame.K_w] and not self.jumping and not self.falling:
+            #self.jumping = True
+            #self.jumpCounter = 0
 
     def move(self):
         self.x += self.xVelocity
@@ -224,8 +222,8 @@ def main():
                     player.go_left()
                 if event.key == pygame.K_d:
                     player.go_right()
-                if event.key == pygame.K_SPACE:
-                    player.jump()
+                if event.key == pygame.K_w:
+                    player.go_up()
 
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_a and player.change_x < 0:
