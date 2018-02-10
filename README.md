@@ -1,5 +1,8 @@
-a game written by Terapixel https://github.com/Hexpixel and TheGreatRambler https://github.com/TheGreatRambler
+A 2D game written by Terapixel and TheGreatRambler
 
-terabit game repo
+@Terapixel (Hexpixel)
+https://github.com/Hexpixel
 
+@TheGreatRambler
+https://github.com/TheGreatRambler
 
