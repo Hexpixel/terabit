@@ -1,7 +1,10 @@
 """
-terabit game ver. 0.0.0
+terabit game ver. 0.0.1
+
 >>MIT License
+
 includes:
+
 procedural terrain generation
 scripted by: TheGreatRambler and Terapixel :D
 """
@@ -69,11 +72,11 @@ game_display = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
 # sets the game window's left hand upper corner caption
 
-pygame.display.set_caption('terabit v0.0.0')
+pygame.display.set_caption('terabit ver. 0.0.1')
 
 # frames per second - increase this value to have smoother game play... note to TheGreatRambler: wouldn't advise this for Windows Vista users kek :P
 
-frames_per_second = 500
+frames_per_second = 120
 
 # player x and y
 
@@ -90,26 +93,26 @@ def returnarrayindex(xvalue, yvalue):
     y = yvalue * 2 if yvalue >= 0 else yvalue * -2 - 1
     number = (x * x + x + y) if (x >= y) else (y * y + x)
     return number
-
+    pygame.display.update()
 
 def gettopcorner():
     return [playerx - (SCREEN_WIDTH / 2) / BLOCK_WIDTH, playery - (SCREEN_HEIGHT / 2) / BLOCK_HEIGHT]
-
-
+    pygame.display.update()
+    
 def drawsquare(x, y, texture):
     topcornerdata = gettopcorner()
     dataforsquare = ((x - topcornerdata[0]) * BLOCK_WIDTH, (y - topcornerdata[1]) * BLOCK_HEIGHT, BLOCK_WIDTH, BLOCK_HEIGHT)
     width = 0
     pygame.draw.rect(game_display, texture, dataforsquare, width)
-
-
+    pygame.display.update()
+    
 def draw():
     pygame.display.update()
     timer.tick(frames_per_second)
 
 
 
-class player(pygame.sprite.Sprite):
+class player:
     def __init__(self, velocity, maxJumpRange):
         self.velocity = velocity
         self.maxJumpRange = maxJumpRange
@@ -121,29 +124,29 @@ class player(pygame.sprite.Sprite):
         self.jumping = False
         self.jumpCounter = 0
         self.falling = True
-
+        
     # player controls:
-
+    
     def go_up(self):
         uk = pygame.key.get_pressed()
         if uk[pygame.K_w]:
             self.jumping = True
             self.jumpCounter = 0
-
+            
     #def go_down(self):
        #dk = pygame.key.get_pressed()
-       #if dk[pygame.K_s]:
-
+       #if dk[pygame.K_s]:     
+    
     def go_right(self):
         rk = pygame.key.get_pressed()
-        if rk[pygame.K_d]:
+        if rk = [pygame.K_d]:
             self.xVelocity = self.velocity
-
+            
     def go_left(self):
         lk = pygame.key.get_pressed()
-        if lk[pygame.K_a]:
+        if lk = [pygame.K_a]:
             self.xVelocity = -self.velocity
-
+            
     def move(self):
         self.x += self.xVelocity
         # check x boundries
@@ -165,11 +168,10 @@ class player(pygame.sprite.Sprite):
         self.size = (50, 50)
         rect = pygame.Rect((self.x, self.y), self.size)
         pygame.draw.rect(game_display, WHITE, rect)
+        pygame.display.update()
 
     def do(self):
-        self.go_up()
-        self.go_left()
-        self.go_right()
+        self.keys()
         self.move()
         self.draw()
 
@@ -180,17 +182,18 @@ P.setLocation(HEIGHT_WIDTH, 0)
 
 # main code
 def main():
+    game_display.blit() # not sure what arguments should be...
     pygame.display.flip()
     timer.tick(frames_per_second)
-    game_display.fill(BLUE) # Add this to "clear" the screen.
-
+    game_display.fill.(BLUE) # Add this to "clear" the screen.
+    
     for f in range(math.floor(gettopcorner()[0]), math.floor(gettopcorner()[0]) * -1):
         terrainforelement = terrainnoise.noise2d(x = f / frequency, y = 0)
         for g in range(0, math.floor((terrainforelement + 1) * 10)):
             drawsquare(-f, -g + 58, GREEN)
-
-
-
+            
+            
+            
     # while loop must go inside main() function.
 
     done = False
@@ -215,10 +218,10 @@ def main():
                     player.stop()
                 if event.key == pygame.K_d and player.change_x > 0:
                     player.stop()
-
+        
         pygame.display.flip()
         timer.tick(frames_per_second)
         P.do()
-
+        
 if __name__ == "__main__":
     main()
