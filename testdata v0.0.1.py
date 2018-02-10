@@ -1,7 +1,10 @@
 """
 terabit game ver. 0.0.1
+
 >>MIT License
+
 includes:
+
 procedural terrain generation
 scripted by: TheGreatRambler and Terapixel :D
 """
