@@ -1,25 +1,59 @@
 Purpose of the CHANGELOG.txt:
 
-- Terapixel uses the CHANGELOG to provide a public documentation of the game's history.
+- Terapixel uses the CHANGELOG to provide public documentation for people who want to know more about the game's version history and whatnot.
 
-- As you can see, the changelog also includes versions of the game that haven't yet been released.  but will be released in the distant future.
+- The changelog includes many versions of the game that haven't yet been released  but will be released in the distant future.
 
-Every update beyond v0.0.0 is unconfirmed and is not set in stone.
+- As of right now, every update beyond v0.0.0 is unconfirmed and is not set in stone.
 
 
-v0.0.0 -- (releasing soon)
+v0.0.0 -- (releasing on Monday 2/12/18)
 
-general:
+General:
 
-entitiy
+New Features:
 
-- crea
+Entitiy
+- added the player entity.
+- the player is currently very unstable.
+- leaves a trail behind itself because I wasn't clearing the screen enough.
+
+Terrain
+- Terrian has been added in the game!
+- When you launch the game, a random terrain will generate in the world.
+- currently, you can't interact with the terrain (break blocks, build with blocks, etc.)
+- more terrain features soon to come!
+
+New Blocks
+- no new blocks, other than the 'terrian block' which is just a placeholder for the terrain.
+- you'll be seeing more blocks very soon, including a several colored grass blocks, different dirt blocks, and different stone blocks.
+
+Controls
+
+
+
 ver 0.0.1 -- (currently planning out)
 (first officially numbered game version)
 
-general: 
+General:
 
-controls:
+Entity
+- some major fixes to the player entity have been added to the game!
+- player no longer leaves a trail of itself.
+- you can now control yourself to a certain extent.
+
+Controls
+- You can now move with the 'WA' keys (left, right).
+- You can now hit the space bar to jump!
+- Press Q to Quit the game.
+
+New Blocks
+-
+-
+-
+-
+-
+-
 
 
 
