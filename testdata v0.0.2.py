@@ -13,11 +13,10 @@ A two-dimensional terrain and sandbox based game written by Terapixel (Hexpixel)
 # imports
 
 import pygame
+import pymunk
 import math
 from opensimplex import OpenSimplex
 import random
-
-
 
 # stores some colors in different variables allowing easier access to colors.
 
@@ -38,7 +37,6 @@ frequency = 20
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 
-
 # height width and height height
 
 HEIGHT_WIDTH = SCREEN_WIDTH / 2
@@ -51,10 +49,10 @@ AREA = SCREEN_WIDTH * SCREEN_HEIGHT
 """ code to make the game run on your current machine's screen size """
 
 # Make fullscreen
-#infoObject = pygame.display.Info()
+# infoObject = pygame.display.Info()
 
-#SCREEN_WIDTH = infoObject.current_w
-#SCREEN_HEIGHT = infoObject.current_h
+# SCREEN_WIDTH = infoObject.current_w
+# SCREEN_HEIGHT = infoObject.current_h
 
 # terrain block dimensions
 
@@ -64,7 +62,6 @@ BLOCK_HEIGHT = 5
 # this command sets a game clock
 
 timer = pygame.time.Clock()
-
 
 # sets the width and height of the screen display / screen window
 
@@ -83,10 +80,10 @@ frames_per_second = 500
 playerx = 0
 playery = 0
 
-# empty array
 gamemap = []
 
 terrainnoise = OpenSimplex(seed=random.randint(0, 100000))
+
 
 def returnarrayindex(xvalue, yvalue):
     x = xvalue * 2 if xvalue >= 0 else xvalue * -2 - 1
@@ -101,7 +98,8 @@ def gettopcorner():
 
 def drawsquare(x, y, texture):
     topcornerdata = gettopcorner()
-    dataforsquare = ((x - topcornerdata[0]) * BLOCK_WIDTH, (y - topcornerdata[1]) * BLOCK_HEIGHT, BLOCK_WIDTH, BLOCK_HEIGHT)
+    dataforsquare = (
+    (x - topcornerdata[0]) * BLOCK_WIDTH, (y - topcornerdata[1]) * BLOCK_HEIGHT, BLOCK_WIDTH, BLOCK_HEIGHT)
     width = 0
     pygame.draw.rect(game_display, texture, dataforsquare, width)
 
@@ -110,9 +108,8 @@ def draw():
     pygame.display.flip()
     timer.tick(frames_per_second)
     game_display.fill(BLUE)
-    
-    
-    
+
+
 class player(pygame.sprite.Sprite):
     def __init__(self, velocity, maxJumpRange):
         self.velocity = velocity
@@ -123,33 +120,27 @@ class player(pygame.sprite.Sprite):
         self.y = y
         self.xVelocity = 0
         self.jumping = False
+        # Stores if player is jumping or not.
         self.jumpCounter = 0
+        # Allows the player to fall.
         self.falling = True
-   
+        self.onGround = False
 
 
-    def getEventsHandler(self):
-        for event in pygame.event.get()
-        
-        
+
     # player controls:
-    
+
     def do_quit(self):
-       qk = pygame.key.get_pressed()
-       if qk[pygame.K_q]:
+        qk = pygame.key.get_pressed()
+        if qk[pygame.K_q]:
             pygame.quit()
             quit()
-          
+
     def go_up(self):
         uk = pygame.key.get_pressed()
         if uk[pygame.K_SPACE]:
             self.jumping = True
             self.jumpCounter = 0
-
-    def go_down(self):
-       dk = pygame.key.get_pressed()
-       if dk[pygame.K_s]:
-          self.y -= self.velocity - self.y
 
     def go_right(self):
         rk = pygame.key.get_pressed()
@@ -162,10 +153,9 @@ class player(pygame.sprite.Sprite):
             self.xVelocity = -self.velocity
 
     def stop_moving(self):
-        """ Called when the user lets off the keyboard. """
+        # Called when the user lets off the keyboard.
         self.change_x = 0
-        self.change_y = 0
-        
+
     def move(self):
         self.x += self.xVelocity
         # check x boundries
@@ -190,12 +180,12 @@ class player(pygame.sprite.Sprite):
 
     def do(self):
         self.go_up()
-        self.go_down()
         self.go_right()
         self.go_left()
-        self.stop()
+        self.stop_moving()
         self.move()
         self.draw()
+
 
 P = player(3, 50)
 P.setLocation(HEIGHT_WIDTH, 0)
@@ -205,25 +195,17 @@ P.setLocation(HEIGHT_WIDTH, 0)
 def main():
     """ Main Program """
 
-    pygame.display.flip()
-    timer.tick(frames_per_second)
-    game_display.fill(BLUE)
-
-    for f in range(math.floor(gettopcorner()[0]), math.floor(gettopcorner()[0]) * -1):
-        terrainforelement = terrainnoise.noise2d(x = f / frequency, y = 0)
-        for g in range(0, math.floor((terrainforelement + 1) * 10)):
-            drawsquare(-f, -g + 58, GREEN)
-
-
-
-    # while loop must go inside main() function.
-
     done = False
     while not done:
 
         pygame.display.flip()
         timer.tick(frames_per_second)
         game_display.fill(BLUE)
+
+        for f in range(math.floor(gettopcorner()[0]), math.floor(gettopcorner()[0]) * -1):
+            terrainforelement = terrainnoise.noise2d(x=f / frequency, y=0)
+            for g in range(0, math.floor((terrainforelement + 1) * 10)):
+                drawsquare(-f, -g + 58, GREEN)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -234,26 +216,21 @@ def main():
                     P.do_quit()
                 if event.key == pygame.K_SPACE:
                     P.go_up()
-                if event.key == pygame.K_s:
-                    P.go_down()
                 if event.key == pygame.K_d:
-                    P.go_right()                    
+                    P.go_right()
                 if event.key == pygame.K_a:
                     P.go_left()
-                    
+
             if event.type == pygame.KEYUP:
-                if event.key == pygame.K_a and P.change_x < 0:
+                if event.key == pygame.K_a:
                     P.stop_moving()
-                if event.key == pygame.K_d and P.change_x > 0:
+                if event.key == pygame.K_d:
                     P.stop_moving()
-                if event.key == pygame.K_SPACE and P.change_y > 0:
-                    P.stop_moving()
-                if event.key == pygame.K_s and P.change_y > 0:
-                    P.go_down()
 
         pygame.display.flip()
         timer.tick(frames_per_second)
         P.do()
+
 
 if __name__ == "__main__":
     main()
