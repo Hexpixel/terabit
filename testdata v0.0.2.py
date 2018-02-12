@@ -70,7 +70,7 @@ game_display = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
 # sets the game window's left hand upper corner caption
 
-pygame.display.set_caption('terabit v0.0.1')
+pygame.display.set_caption('terabit v0.0.2')
 
 # frames per second - increase this value to have smoother game play... note to TheGreatRambler: wouldn't advise this for Windows Vista users kek :P
 
@@ -104,17 +104,13 @@ def drawsquare(x, y, texture):
     pygame.draw.rect(game_display, texture, dataforsquare, width)
 
 
-#def draw():
-    #pygame.display.update()
-    #timer.tick(frames_per_second)
-
-def drawStuff():
+def draw():
     pygame.display.flip()
     timer.tick(frames_per_second)
     game_display.fill(BLUE)
-
-
-
+    
+    
+    
 class player(pygame.sprite.Sprite):
     def __init__(self, velocity, maxJumpRange):
         self.velocity = velocity
@@ -127,9 +123,15 @@ class player(pygame.sprite.Sprite):
         self.jumping = False
         self.jumpCounter = 0
         self.falling = True
+   
 
+
+    def getEventsHandler(self):
+        for event in pygame.event.get()
+        
+        
     # player controls:
-
+    
     def do_quit(self):
        qk = pygame.key.get_pressed()
        if qk[pygame.K_q]:
@@ -145,7 +147,7 @@ class player(pygame.sprite.Sprite):
     def go_down(self):
        dk = pygame.key.get_pressed()
        if dk[pygame.K_s]:
-          self
+          self.y -= self.velocity - self.y
 
     def go_right(self):
         rk = pygame.key.get_pressed()
@@ -186,8 +188,9 @@ class player(pygame.sprite.Sprite):
 
     def do(self):
         self.go_up()
-        self.go_left()
+        self.go_down()
         self.go_right()
+        self.go_left()
         self.stop()
         self.move()
         self.draw()
@@ -225,15 +228,17 @@ def main():
                 done = True
 
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_a:
-                    P.go_left()
-                if event.key == pygame.K_d:
-                    P.go_right()
-                if event.key == pygame.K_SPACE:
-                    P.go_up()
                 if event.key == pygame.K_q:
                     P.do_quit()
-
+                if event.key == pygame.K_SPACE:
+                    P.go_up()
+                if event.key == pygame.K_s:
+                    P.go_down()
+                if event.key == pygame.K_d:
+                    P.go_right()                    
+                if event.key == pygame.K_a:
+                    P.go_left()
+                    
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_a and P.change_x < 0:
                     P.stop_moving()
@@ -241,6 +246,8 @@ def main():
                     P.stop_moving()
                 if event.key == pygame.K_SPACE and P.change_y > 0:
                     P.stop_moving()
+                if event.key == pygame.K_s and P.change_y > 0:
+                    P.go_down()
 
         pygame.display.flip()
         timer.tick(frames_per_second)
