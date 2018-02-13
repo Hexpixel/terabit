@@ -84,9 +84,6 @@ gamemap = []
 
 
 
-
-
-
 terrainnoise = OpenSimplex(seed=random.randint(0, 100000))
 
 
