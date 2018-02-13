@@ -110,18 +110,9 @@ def draw():
     pygame.display.flip()
     timer.tick(frames_per_second)
     game_display.fill(BLUE)
-
-
-
-# add a collision handler
-
-#def add_collision_handler(collision_type_a, collision_type_b):
-
-# detects if there is a collision
-
-#def detectCollisions():
-
-
+    
+    
+    
 class player(pygame.sprite.Sprite):
     def __init__(self, velocity, maxJumpRange):
         self.velocity = velocity
@@ -137,8 +128,6 @@ class player(pygame.sprite.Sprite):
         # Allows the player to fall.
         self.falling = True
         self.onGround = False
-
-
 
     # player controls:
 
@@ -173,7 +162,7 @@ class player(pygame.sprite.Sprite):
     #def stop_moving(self):
         # Called when the user lets off the keyboard.
         #self.change_x = 0
-        #self.change_y = 0
+        # not really sure what to do with this...
 
     def move(self):
         self.x += self.xVelocity
