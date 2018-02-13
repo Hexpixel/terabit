@@ -82,6 +82,11 @@ playery = 0
 
 gamemap = []
 
+
+
+
+
+
 terrainnoise = OpenSimplex(seed=random.randint(0, 100000))
 
 
@@ -108,6 +113,16 @@ def draw():
     pygame.display.flip()
     timer.tick(frames_per_second)
     game_display.fill(BLUE)
+
+
+
+# add a collision handler
+
+#def add_collision_handler(collision_type_a, collision_type_b):
+
+# detects if there is a collision
+
+#def detectCollisions():
 
 
 class player(pygame.sprite.Sprite):
@@ -142,6 +157,12 @@ class player(pygame.sprite.Sprite):
             self.jumping = True
             self.jumpCounter = 0
 
+    def go_down(self):
+        dk = pygame.key.get_pressed()
+        self.y = 0
+        if dk[pygame.K_s]:
+            self.y += 10
+
     def go_right(self):
         rk = pygame.key.get_pressed()
         if rk[pygame.K_d]:
@@ -152,9 +173,10 @@ class player(pygame.sprite.Sprite):
         if lk[pygame.K_a]:
             self.xVelocity = -self.velocity
 
-    def stop_moving(self):
+    #def stop_moving(self):
         # Called when the user lets off the keyboard.
-        self.change_x = 0
+        #self.change_x = 0
+        #self.change_y = 0
 
     def move(self):
         self.x += self.xVelocity
@@ -182,7 +204,6 @@ class player(pygame.sprite.Sprite):
         self.go_up()
         self.go_right()
         self.go_left()
-        self.stop_moving()
         self.move()
         self.draw()
 
@@ -216,16 +237,18 @@ def main():
                     P.do_quit()
                 if event.key == pygame.K_SPACE:
                     P.go_up()
+                if event.key == pygame.K_s:
+                    P.go_down()
                 if event.key == pygame.K_d:
                     P.go_right()
                 if event.key == pygame.K_a:
                     P.go_left()
 
-            if event.type == pygame.KEYUP:
-                if event.key == pygame.K_a:
-                    P.stop_moving()
-                if event.key == pygame.K_d:
-                    P.stop_moving()
+            #if event.type == pygame.KEYUP:
+                #if event.key == pygame.K_a:
+                    #P.stop_moving()
+                #if event.key == pygame.K_d:
+                    #P.stop_moving()
 
         pygame.display.flip()
         timer.tick(frames_per_second)
@@ -234,3 +257,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
