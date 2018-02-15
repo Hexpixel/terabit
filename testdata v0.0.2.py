@@ -142,9 +142,9 @@ class player(pygame.sprite.Sprite):
 
     def go_down(self):
         dk = pygame.key.get_pressed()
-        self.y = 0
+        self.y = y
         if dk[pygame.K_s]:
-            self.y += 10
+            y += xVelocity
 
     def go_right(self):
         rk = pygame.key.get_pressed()
