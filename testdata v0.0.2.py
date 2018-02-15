@@ -228,11 +228,15 @@ def main():
                 if event.key == pygame.K_a:
                     P.go_left()
 
-            #if event.type == pygame.KEYUP:
-                #if event.key == pygame.K_a:
-                    #P.stop_moving()
-                #if event.key == pygame.K_d:
-                    #P.stop_moving()
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_SPACE:
+                    P.stop_moving()
+                if event.key == pygame.K_s:
+                    P.stop_moving()
+                if event.key == pygame.K_d:
+                    P.stop_moving()
+                if event.key == pygame.K_a:
+                    P.stop_moving()
 
         pygame.display.flip()
         timer.tick(frames_per_second)
@@ -241,4 +245,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
