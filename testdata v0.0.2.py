@@ -99,12 +99,13 @@ def drawsquare(x, y, texture):
     topcornerdata = gettopcorner()
     dataforsquare = (
     (x - topcornerdata[0]) * BLOCK_WIDTH, (y - topcornerdata[1]) * BLOCK_HEIGHT, BLOCK_WIDTH, BLOCK_HEIGHT)
-    # this value increases the thickness of the terrain?
-    width = 0
+    # this value increases the depth of the terrain?
+    width = 20
     # this draws the terrain.
     pygame.draw.rect(game_display, texture, dataforsquare, width)
    
 def draw():
+    # updates stuff.
     pygame.display.flip()
     timer.tick(frames_per_second)
     game_display.fill(BLUE)
@@ -121,8 +122,7 @@ class player(pygame.sprite.Sprite):
         self.y = y
         self.xVelocity = 0
         self.jumping = False
-        # Counts the number of times the player is jumping.
-        self.jumpCounter = 0
+        self.jumpCounter = 0  # Counts the number of times the player is jumping.
         self.falling = True
         self.onGround = False
 
@@ -158,8 +158,8 @@ class player(pygame.sprite.Sprite):
 
     #def stop_moving(self):
         # Called when the user lets off the keyboard.
-        #self.change_x = 0
         # not really sure what to do with this...
+        
 
     def move(self):
         self.x += self.xVelocity
