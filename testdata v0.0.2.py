@@ -156,7 +156,7 @@ class player(pygame.sprite.Sprite):
         if lk[pygame.K_a]:
             self.xVelocity = -self.velocity
 
-    #def stop_moving(self):
+    def stop_moving(self):
         # Called when the user lets off the keyboard.
         # not really sure what to do with this...
         
@@ -187,7 +187,7 @@ class player(pygame.sprite.Sprite):
         self.go_up()
         self.go_right()
         self.go_left()
-        #self.stop_moving()
+        self.stop_moving()
         self.move()
         self.draw()
 
