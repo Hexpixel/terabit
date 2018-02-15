@@ -1,4 +1,3 @@
-"""
 import pygame
 import sys
 from pygame.locals import *
@@ -129,5 +128,4 @@ while True:
     # updates the display as well.
     pygame.display.update()
     game_intro()
-
-"""
+    
