@@ -82,9 +82,8 @@ playery = 0
 
 gamemap = []
 
-
-
 terrainnoise = OpenSimplex(seed=random.randint(0, 100000))
+
 
 
 def returnarrayindex(xvalue, yvalue):
@@ -93,10 +92,8 @@ def returnarrayindex(xvalue, yvalue):
     number = (x * x + x + y) if (x >= y) else (y * y + x)
     return number
 
-
 def gettopcorner():
     return [playerx - (SCREEN_WIDTH / 2) / BLOCK_WIDTH, playery - (SCREEN_HEIGHT / 2) / BLOCK_HEIGHT]
-
 
 def drawsquare(x, y, texture):
     topcornerdata = gettopcorner()
@@ -104,8 +101,7 @@ def drawsquare(x, y, texture):
     (x - topcornerdata[0]) * BLOCK_WIDTH, (y - topcornerdata[1]) * BLOCK_HEIGHT, BLOCK_WIDTH, BLOCK_HEIGHT)
     width = 0
     pygame.draw.rect(game_display, texture, dataforsquare, width)
-
-
+   
 def draw():
     pygame.display.flip()
     timer.tick(frames_per_second)
@@ -190,6 +186,7 @@ class player(pygame.sprite.Sprite):
         self.go_up()
         self.go_right()
         self.go_left()
+        #self.stop_moving()
         self.move()
         self.draw()
 
