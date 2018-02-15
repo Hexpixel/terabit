@@ -82,8 +82,9 @@ playery = 0
 
 gamemap = []
 
-terrainnoise = OpenSimplex(seed=random.randint(0, 100000))
 
+
+terrainnoise = OpenSimplex(seed=random.randint(0, 100000))
 
 
 def returnarrayindex(xvalue, yvalue):
@@ -92,26 +93,25 @@ def returnarrayindex(xvalue, yvalue):
     number = (x * x + x + y) if (x >= y) else (y * y + x)
     return number
 
+
 def gettopcorner():
     return [playerx - (SCREEN_WIDTH / 2) / BLOCK_WIDTH, playery - (SCREEN_HEIGHT / 2) / BLOCK_HEIGHT]
+
 
 def drawsquare(x, y, texture):
     topcornerdata = gettopcorner()
     dataforsquare = (
     (x - topcornerdata[0]) * BLOCK_WIDTH, (y - topcornerdata[1]) * BLOCK_HEIGHT, BLOCK_WIDTH, BLOCK_HEIGHT)
-    # this value increases the depth of the terrain?
-    width = 20
-    # this draws the terrain.
+    width = 0
     pygame.draw.rect(game_display, texture, dataforsquare, width)
-   
+
 def draw():
-    # updates stuff.
     pygame.display.flip()
     timer.tick(frames_per_second)
     game_display.fill(BLUE)
-    
-    
-    
+
+
+
 class player(pygame.sprite.Sprite):
     def __init__(self, velocity, maxJumpRange):
         self.velocity = velocity
@@ -122,17 +122,24 @@ class player(pygame.sprite.Sprite):
         self.y = y
         self.xVelocity = 0
         self.jumping = False
-        self.jumpCounter = 0  # Counts the number of times the player is jumping.
+        # Stores if player is jumping or not.
+        self.jumpCounter = 0
+        # Allows the player to fall.
         self.falling = True
         self.onGround = False
+
+
 
     # player controls:
 
     def do_quit(self):
         qk = pygame.key.get_pressed()
         if qk[pygame.K_q]:
+            print("TO CONSOLE: You left the game!")
             pygame.quit()
             quit()
+            
+    #def stop_moving(self):
 
     def go_up(self):
         uk = pygame.key.get_pressed()
@@ -142,9 +149,9 @@ class player(pygame.sprite.Sprite):
 
     def go_down(self):
         dk = pygame.key.get_pressed()
-        self.y = y
         if dk[pygame.K_s]:
-            y += xVelocity
+            self.xVelocity += self.velocity
+            #self.y += self.velocity
 
     def go_right(self):
         rk = pygame.key.get_pressed()
@@ -155,11 +162,6 @@ class player(pygame.sprite.Sprite):
         lk = pygame.key.get_pressed()
         if lk[pygame.K_a]:
             self.xVelocity = -self.velocity
-
-    def stop_moving(self):
-        # Called when the user lets off the keyboard.
-        # not really sure what to do with this...
-        
 
     def move(self):
         self.x += self.xVelocity
@@ -179,20 +181,26 @@ class player(pygame.sprite.Sprite):
                 self.y += self.velocity
 
     def draw(self):
-        self.size = (50, 50)
+        self.size = (10, 10)
         rect = pygame.Rect((self.x, self.y), self.size)
         pygame.draw.rect(game_display, WHITE, rect)
 
+        #self.image = pygame.image.load('char.png')
+        #self.rect = self.image.get_rect()
+
+
+
     def do(self):
+        self.do_quit()
+        #self.stop_moving()
         self.go_up()
         self.go_right()
         self.go_left()
-        self.stop_moving()
         self.move()
         self.draw()
 
 
-P = player(3, 50)
+P = player(2, 10)
 P.setLocation(HEIGHT_WIDTH, 0)
 
 
@@ -210,7 +218,7 @@ def main():
         for f in range(math.floor(gettopcorner()[0]), math.floor(gettopcorner()[0]) * -1):
             terrainforelement = terrainnoise.noise2d(x=f / frequency, y=0)
             for g in range(0, math.floor((terrainforelement + 1) * 10)):
-                drawsquare(-f, -g + 58, GREEN)
+                drawsquare(-f, -g + 59, GREEN)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -228,15 +236,13 @@ def main():
                 if event.key == pygame.K_a:
                     P.go_left()
 
-            if event.type == pygame.KEYUP:
-                if event.key == pygame.K_SPACE:
-                    P.stop_moving()
-                if event.key == pygame.K_s:
-                    P.stop_moving()
-                if event.key == pygame.K_d:
-                    P.stop_moving()
-                if event.key == pygame.K_a:
-                    P.stop_moving()
+            #if event.type == pygame.KEYUP:
+                #if event.key == pygame.K_s:
+                    #P.stop_moving()
+                #if event.key == pygame.K_d:
+                    #P.stop_moving()
+                #if event.key == pygame.K_a:
+                    #P.stop_moving()
 
         pygame.display.flip()
         timer.tick(frames_per_second)
