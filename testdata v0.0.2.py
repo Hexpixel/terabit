@@ -99,7 +99,9 @@ def drawsquare(x, y, texture):
     topcornerdata = gettopcorner()
     dataforsquare = (
     (x - topcornerdata[0]) * BLOCK_WIDTH, (y - topcornerdata[1]) * BLOCK_HEIGHT, BLOCK_WIDTH, BLOCK_HEIGHT)
+    # this value increases the thickness of the terrain?
     width = 0
+    # this draws the terrain.
     pygame.draw.rect(game_display, texture, dataforsquare, width)
    
 def draw():
@@ -119,9 +121,8 @@ class player(pygame.sprite.Sprite):
         self.y = y
         self.xVelocity = 0
         self.jumping = False
-        # Stores if player is jumping or not.
+        # Counts the number of times the player is jumping.
         self.jumpCounter = 0
-        # Allows the player to fall.
         self.falling = True
         self.onGround = False
 
