@@ -9,19 +9,18 @@ class Camera(object):
     def update(self, target):
         self.state = self.camera_func(self.state, target.rect)
         
-    for row in level:
-    ...
-
-total_level_width  = len(level[0])*32 # calculate size of level in pixels
-total_level_height = len(level)*32    # maybe make 32 an constant
-camera = Camera(*to_be_implemented*, total_level_width, total_level_height)
+    for row in game_display:
+        
+    total_game_width  = len(SCREEN_WIDTH[0])*32 # calculate size of level in pixels
+    total_game_height = len(SCREEN_HEIGHT)*32    # maybe make 32 an constant
+    camera = Camera(*to_be_implemented*, SCREEN_WIDTH, SCREEN_HEIGHT)
 
 entities.add(player)
-... 
+
 
 # draw background
 for y in range(32):
-    ...
+    
 
 camera.update(player) # camera follows player. Note that we could also follow any other sprite
 
