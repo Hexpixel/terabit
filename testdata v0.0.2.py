@@ -143,9 +143,8 @@ class player(pygame.sprite.Sprite):
 
     def go_up(self):
         uk = pygame.key.get_pressed()
-        if uk[pygame.K_SPACE]:
-            self.jumping = True
-            self.jumpCounter = 0
+        if uk[K_SPACE] and player.jumping == False and player.jump_offset == 0:
+		    player.jumping = True
 
     def go_down(self):
         dk = pygame.key.get_pressed()
