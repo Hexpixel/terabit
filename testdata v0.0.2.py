@@ -105,6 +105,7 @@ def drawsquare(x, y, texture):
     width = 0
     pygame.draw.rect(game_display, texture, dataforsquare, width)
 
+	
 def draw():
     pygame.display.flip()
     timer.tick(frames_per_second)
@@ -143,8 +144,8 @@ class player(pygame.sprite.Sprite):
 
     def go_up(self):
         uk = pygame.key.get_pressed()
-        if uk[K_SPACE] and player.jumping == False and player.jump_offset == 0:
-		    player.jumping = True
+        if uk[K_SPACE] and player.jumping == False and player.jumpCounter == 0:
+		player.jumping = True
 
     def go_down(self):
         dk = pygame.key.get_pressed()
