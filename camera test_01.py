@@ -32,8 +32,8 @@ area = screen_width * screen_height
 # initialise display
 pygame.init()
 timer = pygame.time.Clock()
-game_display = pygame.display.set_mode((W, H))
-pygame.display.set_caption("Scrolling background test 01")
+game_display = pygame.display.set_mode((screen_width, screen_height))
+pygame.display.set_caption("Scrolling test 01")
 frames_per_second = 500
 
 # define some colors
