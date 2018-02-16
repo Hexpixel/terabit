@@ -146,7 +146,16 @@ class player(pygame.sprite.Sprite):
         uk = pygame.key.get_pressed()
         if uk[K_SPACE] and player.jumping == False and player.jumpCounter == 0:
 		player.jumping = True
-
+		
+    def do_jumping(player):
+	global jump_height
+	
+	if player.jumping:
+		player.jump_offset += 1
+		if player.jump_offset >= jump_height:
+			player.jumping = False
+	elif player.jump_offset > 0 and player.jumping == False:
+		player.jump_offset -= 1
     def go_down(self):
         dk = pygame.key.get_pressed()
         if dk[pygame.K_s]:
@@ -200,8 +209,11 @@ class player(pygame.sprite.Sprite):
         self.draw()
 
 
-P = player(2, 10)
+#P = player(2, 10)
+P = player(HW, HH, 50)
 P.setLocation(HEIGHT_WIDTH, 0)
+
+jump_height = 50
 
 
 
