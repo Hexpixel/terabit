@@ -1,35 +1,74 @@
-class Camera(object):
-    def __init__(self, camera_func, width, height):
-        self.camera_func = camera_func
-        self.state = Rect(0, 0, width, height)
+import math, random, sys
+import pygame
+from pygame.locals import *
 
-    def apply(self, target):
-        return target.rect.move(self.state.topleft)
+# exit the program
+def events():
+	for event in pygame.event.get():
+		if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
+			pygame.quit()
+			sys.exit()
 
-    def update(self, target):
-        self.state = self.camera_func(self.state, target.rect)
-        
-    for row in game_display:
-        
-    total_game_width  = len(SCREEN_WIDTH[0])*32 # calculate size of level in pixels
-    total_game_height = len(SCREEN_HEIGHT)*32    # maybe make 32 an constant
-    camera = Camera(*to_be_implemented*, SCREEN_WIDTH, SCREEN_HEIGHT)
+def text(font, string, x, y, xJustify = None, yJustify = None, surface = None):
+	global WHITE, BLACK
+	if not surface: surface = pygame.display.get_surface()
+	textSurface = font.render(string, 1, WHITE, BLACK)
+	textRect = textSurface.get_rect()
+	if xJustify == 1:
+		x -= textRect.width
+	elif xJustify == 2:
+		x -= textRect.center[0]
+	if yJustify == 1:
+		y -= textRect.height
+	elif yJustify == 2:
+		y -= textRect.center[1]
+	surface.blit(textSurface, (x, y))		
+	
+# define display surface			
+screen_width, screen_height = 800, 600
+height_width, height_height = screen_width / 2, screen_height / 2
+area = screen_width * screen_height
 
-entities.add(player)
+# initialise display
+pygame.init()
+timer = pygame.time.Clock()
+game_display = pygame.display.set_mode((W, H))
+pygame.display.set_caption("Scrolling background test 01")
+frames_per_second = 500
 
+# define some colors
+BLACK = (0, 0, 0, 255)
+WHITE = (255, 255, 255, 255)
+BLUE  = (0, 0, 255, 255)
 
-# draw background
-for y in range(32):
-    
+circleRadius = 25
 
-camera.update(player) # camera follows player. Note that we could also follow any other sprite
+stageX = 50
+stageY = HH - 200
+stageHeight = 400
+stageWidth = W - 100
 
-# update player, draw everything else
-player.update(up, down, left, right, running, platforms)
-for e in entities:
-    # apply the offset to each entity.
-    # call this for everything that should scroll,
-    # which is basically everything other than GUI/HUD/UI
-    screen.blit(e.image, camera.apply(e)) 
+dw = 712
+dhw = dw / 2
 
-pygame.display.update()
+# main loop
+while True:
+	events()
+
+	mx, my = pygame.mouse.get_pos()
+	
+	if mx < stageX + circleRadius: mx = stageX + circleRadius
+	if mx > stageX + stageWidth - circleRadius: mx = stageX + stageWidth - circleRadius
+	
+	if mx < stageX + dhw: dx = stageX + dhw
+	elif mx > stageX + stageWidth - dhw: dx = stageX + stageWidth - dhw
+	else:
+		dx = mx
+	
+	pygame.draw.rect(game_display, WHITE, (stageX, stageY, stageWidth, stageHeight), 2)
+	pygame.draw.rect(game_display, BLUE, (dx - dhw, stageY, dw, stageHeight), 2)
+	pygame.draw.circle(game_display, WHITE, (mx, HH + 100), circleRadius, 0)
+	
+	pygame.display.update()
+	timer.tick(frames_per_second)
+	game_display.fill(BLUE)
