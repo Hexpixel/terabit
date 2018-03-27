@@ -1,13 +1,9 @@
 """
-
 terabit v0.0.2
-
 includes:
 >>MIT License
-
 description:
 A two-dimensional terrain and sandbox based game written by Terapixel (Hexpixel) and TheGreatRambler.
-
 """
 
 # imports
@@ -105,12 +101,6 @@ def drawsquare(x, y, texture):
     width = 0
     pygame.draw.rect(game_display, texture, dataforsquare, width)
 
-	
-def draw():
-    pygame.display.flip()
-    timer.tick(frames_per_second)
-    game_display.fill(BLUE)
-
 
 
 class player(pygame.sprite.Sprite):
@@ -128,49 +118,40 @@ class player(pygame.sprite.Sprite):
         # Allows the player to fall.
         self.falling = True
         self.onGround = False
-
+        self.speed = 2
 
 
     # player controls:
+    # Should I have these in their own functions?
 
     def do_quit(self):
         qk = pygame.key.get_pressed()
         if qk[pygame.K_q]:
-            print("TO CONSOLE: You left the game!")
+            #print("[CONSOLE]: You left the game!")
             pygame.quit()
             quit()
-            
-    #def stop_moving(self):
 
     def go_up(self):
         uk = pygame.key.get_pressed()
-        if uk[K_SPACE] and player.jumping == False and player.jumpCounter == 0:
-		player.jumping = True
-		
-    def do_jumping(player):
-	global jump_height
-	
-	if player.jumping:
-		player.jump_offset += 1
-		if player.jump_offset >= jump_height:
-			player.jumping = False
-	elif player.jump_offset > 0 and player.jumping == False:
-		player.jump_offset -= 1
+        if uk[pygame.K_SPACE]:
+            self.falling = True
+            self.jmuping = True
+            self.y -= self.speed + 2.5
+
     def go_down(self):
         dk = pygame.key.get_pressed()
         if dk[pygame.K_s]:
-            self.xVelocity += self.velocity
-            #self.y += self.velocity
+            self.y += self.speed + 2.5 # I think this works?
 
     def go_right(self):
         rk = pygame.key.get_pressed()
         if rk[pygame.K_d]:
-            self.xVelocity = self.velocity
+            self.x += self.speed
 
     def go_left(self):
         lk = pygame.key.get_pressed()
         if lk[pygame.K_a]:
-            self.xVelocity = -self.velocity
+            self.x -= self.speed
 
     def move(self):
         self.x += self.xVelocity
@@ -189,19 +170,15 @@ class player(pygame.sprite.Sprite):
             else:
                 self.y += self.velocity
 
+
     def draw(self):
-        self.size = (10, 10)
+        self.size = (20, 20)
         rect = pygame.Rect((self.x, self.y), self.size)
         pygame.draw.rect(game_display, WHITE, rect)
-
-        #self.image = pygame.image.load('char.png')
-        #self.rect = self.image.get_rect()
-
 
 
     def do(self):
         self.do_quit()
-        #self.stop_moving()
         self.go_up()
         self.go_right()
         self.go_left()
@@ -209,8 +186,7 @@ class player(pygame.sprite.Sprite):
         self.draw()
 
 
-#P = player(2, 10)
-P = player(HW, HH, 50)
+P = player(2, 10)
 P.setLocation(HEIGHT_WIDTH, 0)
 
 jump_height = 50
@@ -248,13 +224,8 @@ def main():
                 if event.key == pygame.K_a:
                     P.go_left()
 
-            #if event.type == pygame.KEYUP:
-                #if event.key == pygame.K_s:
-                    #P.stop_moving()
-                #if event.key == pygame.K_d:
-                    #P.stop_moving()
-                #if event.key == pygame.K_a:
-                    #P.stop_moving()
+            #if event.type == pygame.KEY_UP:
+                #if event.key == K_s:
 
         pygame.display.flip()
         timer.tick(frames_per_second)
