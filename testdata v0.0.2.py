@@ -1,9 +1,8 @@
 """
-terabit v0.0.2
-includes:
->>MIT License
-description:
-A two-dimensional terrain and sandbox based game written by Terapixel (Hexpixel) and TheGreatRambler.
+++ terabit v0.0.2 ++
+
+Aimed to be a two-dimensional terrain and sandbox based game.
+Written by Terapixel (Hexpixel) and TheGreatRambler.
 """
 
 # imports
