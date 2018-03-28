@@ -224,13 +224,7 @@ def main():
                 if event.key == pygame.K_a:
                     P.go_left()
 
-            #if event.type == pygame.KEY_UP:
-                #if event.key == K_s:
-
-        pygame.display.flip()
-        timer.tick(frames_per_second)
         P.do()
-
 
 if __name__ == "__main__":
     main()
