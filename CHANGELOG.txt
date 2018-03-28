@@ -4,7 +4,7 @@ Purpose of the CHANGELOG.txt:
 
 - The changelog includes many versions of the game that haven't yet been released  but will be released in the distant future.
 
-- As of right now, every update beyond v0.0.0 is unconfirmed and is not set in stone.
+- As of right now, every update beyond v0.0.3 is unconfirmed and is not set in stone.
 
 
 v0.0.0 -- (releasing on Monday 2/12/18)
