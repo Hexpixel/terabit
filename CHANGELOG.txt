@@ -57,14 +57,14 @@ New Blocks
 
 
 
-ver 0.0.2 -- (nearing towards ver 0.0.3)
+ver 0.0.2 -- (Realeasing on Wednesday, 3/28/18!  Nearing towards ver 0.0.3 - currently planning)
 
 Entity
 - major fixes to the player entity have been added to the game
 - Fixed the (weird and annoying) visually unappealing player image glitch (because I had too much screen clearing code in the while loop)
 
 Controls
-- Fixed controls
+- Re-wrote all controls from scratch.  They now work entirely!
   Added the S key! You can now move downwards (currently being tested)
   
 Blocks
