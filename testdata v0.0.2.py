@@ -8,7 +8,6 @@ Written by Terapixel (Hexpixel) and TheGreatRambler.
 # imports
 
 import pygame
-import pymunk
 import math
 from opensimplex import OpenSimplex
 import random
@@ -41,7 +40,7 @@ HEIGHT_HEIGHT = SCREEN_HEIGHT / 2
 
 AREA = SCREEN_WIDTH * SCREEN_HEIGHT
 
-""" code to make the game run on your current machine's screen size """
+# code to make the game run on your current machine's screen size
 
 # Make fullscreen
 # infoObject = pygame.display.Info()
@@ -68,7 +67,7 @@ pygame.display.set_caption('terabit v0.0.2')
 
 # frames per second - increase this value to have smoother game play... note to TheGreatRambler: wouldn't advise this for Windows Vista users kek :P
 
-frames_per_second = 500
+frames_per_second = 200
 
 # player x and y
 
@@ -77,10 +76,7 @@ playery = 0
 
 gamemap = []
 
-
-
 terrainnoise = OpenSimplex(seed=random.randint(0, 100000))
-
 
 def returnarrayindex(xvalue, yvalue):
     x = xvalue * 2 if xvalue >= 0 else xvalue * -2 - 1
@@ -120,22 +116,34 @@ class player(pygame.sprite.Sprite):
         self.speed = 2
 
 
-    # player controls:
-    # Should I have these in their own functions?
+    # player controls
 
     def do_quit(self):
         qk = pygame.key.get_pressed()
         if qk[pygame.K_q]:
-            #print("[CONSOLE]: You left the game!")
             pygame.quit()
             quit()
 
-    def go_up(self):
+    def no_up(self):
         uk = pygame.key.get_pressed()
-        if uk[pygame.K_SPACE]:
-            self.falling = True
-            self.jmuping = True
-            self.y -= self.speed + 2.5
+        if uk[pygame.K_SPACE] and self.jumping == False and self.jumpCounter == 0:
+            self.jumping = True
+
+    def go_up(self):
+        global jump_height
+        if self.jumping:
+            self.jumpCounter += 1
+            if self.jumpCounter >= jump_height:
+                self.jumping == False
+        elif self.jumpCounter > 0 and self.jumping == False:
+            self.jumpCounter -= 1
+
+    #def go_up(self):
+        #uk = pygame.key.get_pressed()
+        #if uk[pygame.K_SPACE]:
+            #self.falling = True
+            #self.jmuping = True
+            #self.y -= self.speed + 2.5
 
     def go_down(self):
         dk = pygame.key.get_pressed()
@@ -172,12 +180,13 @@ class player(pygame.sprite.Sprite):
 
     def draw(self):
         self.size = (20, 20)
-        rect = pygame.Rect((self.x, self.y), self.size)
+        rect = pygame.Rect((self.x, self.y - self.jumpCounter), self.size)
         pygame.draw.rect(game_display, WHITE, rect)
 
 
     def do(self):
         self.do_quit()
+        self.no_up()
         self.go_up()
         self.go_right()
         self.go_left()
@@ -185,7 +194,7 @@ class player(pygame.sprite.Sprite):
         self.draw()
 
 
-P = player(2, 10)
+P = player(2, 30)
 P.setLocation(HEIGHT_WIDTH, 0)
 
 jump_height = 50
@@ -201,6 +210,7 @@ def main():
         pygame.display.flip()
         timer.tick(frames_per_second)
         game_display.fill(BLUE)
+        #game_display.fill("plains_background.png").convert()
 
         for f in range(math.floor(gettopcorner()[0]), math.floor(gettopcorner()[0]) * -1):
             terrainforelement = terrainnoise.noise2d(x=f / frequency, y=0)
