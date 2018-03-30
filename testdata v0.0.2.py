@@ -138,13 +138,6 @@ class player(pygame.sprite.Sprite):
         elif self.jumpCounter > 0 and self.jumping == False:
             self.jumpCounter -= 1
 
-    #def go_up(self):
-        #uk = pygame.key.get_pressed()
-        #if uk[pygame.K_SPACE]:
-            #self.falling = True
-            #self.jmuping = True
-            #self.y -= self.speed + 2.5
-
     def go_down(self):
         dk = pygame.key.get_pressed()
         if dk[pygame.K_s]:
@@ -237,3 +230,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
