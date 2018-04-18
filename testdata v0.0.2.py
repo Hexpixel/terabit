@@ -63,7 +63,7 @@ game_display = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
 # sets the game window's left hand upper corner caption
 
-pygame.display.set_caption('terabit v0.0.2')
+pygame.display.set_caption('terabit ver 0.0.2')
 
 # frames per second - increase this value to have smoother game play... note to TheGreatRambler: wouldn't advise this for Windows Vista users kek :P
 
@@ -78,10 +78,27 @@ gamemap = []
 
 terrainnoise = OpenSimplex(seed=random.randint(0, 100000))
 
+#def returnarrayindex(xvalue, yvalue):
+    #x = xvalue * 2 if xvalue >= 0 else xvalue * -2 - 1
+    #y = yvalue * 2 if yvalue >= 0 else yvalue * -2 - 1
+    #number = (x * x + x + y) if (x >= y) else (y * y + x)
+    #return number
+
 def returnarrayindex(xvalue, yvalue):
-    x = xvalue * 2 if xvalue >= 0 else xvalue * -2 - 1
-    y = yvalue * 2 if yvalue >= 0 else yvalue * -2 - 1
-    number = (x * x + x + y) if (x >= y) else (y * y + x)
+    x = xvalue
+    y = yvalue
+    if xvalue >= 0:
+        xvalue * 2
+    else:
+        xvalue * -2 - 1
+    if yvalue >= 0:
+        yvalue * 2
+    else:
+        yvalue * -2 -1
+    if x >= y:
+        number = x * x + x + y
+    else:
+        y * y + x
     return number
 
 
@@ -108,17 +125,14 @@ class player(pygame.sprite.Sprite):
         self.y = y
         self.xVelocity = 0
         self.jumping = False
-        # Stores if player is jumping or not.
-        self.jumpCounter = 0
-        # Allows the player to fall.
-        self.falling = True
+        self.jumpCounter = 0 # Stores if player is jumping or not.
+        self.falling = True # Allows the player to fall.
         self.onGround = False
         self.speed = 2
 
-
     # player controls
 
-    def do_quit(self):
+    def quit_game(self):
         qk = pygame.key.get_pressed()
         if qk[pygame.K_q]:
             pygame.quit()
@@ -178,7 +192,7 @@ class player(pygame.sprite.Sprite):
 
 
     def do(self):
-        self.do_quit()
+        self.quit_game()
         self.no_up()
         self.go_up()
         self.go_right()
@@ -203,7 +217,6 @@ def main():
         pygame.display.flip()
         timer.tick(frames_per_second)
         game_display.fill(BLUE)
-        #game_display.fill("plains_background.png").convert()
 
         for f in range(math.floor(gettopcorner()[0]), math.floor(gettopcorner()[0]) * -1):
             terrainforelement = terrainnoise.noise2d(x=f / frequency, y=0)
@@ -216,7 +229,7 @@ def main():
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_q:
-                    P.do_quit()
+                    P.quit_game()
                 if event.key == pygame.K_SPACE:
                     P.go_up()
                 if event.key == pygame.K_s:
@@ -230,4 +243,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
