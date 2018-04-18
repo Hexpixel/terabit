@@ -5,14 +5,12 @@ Aimed to be a two-dimensional terrain and sandbox based game.
 Written by Terapixel (Hexpixel) and TheGreatRambler.
 """
 
-# imports
-
 import pygame
 import math
 from opensimplex import OpenSimplex
 import random
 
-# stores some colors in different variables allowing easier access to colors.
+# colors
 
 WHITE = (255, 255, 255),
 BLACK = (0, 0, 0),
@@ -36,9 +34,7 @@ SCREEN_HEIGHT = 600
 HEIGHT_WIDTH = SCREEN_WIDTH / 2
 HEIGHT_HEIGHT = SCREEN_HEIGHT / 2
 
-# area
-
-AREA = SCREEN_WIDTH * SCREEN_HEIGHT
+AREA = SCREEN_WIDTH * SCREEN_HEIGHT # area
 
 # code to make the game run on your current machine's screen size
 
@@ -78,12 +74,6 @@ gamemap = []
 
 terrainnoise = OpenSimplex(seed=random.randint(0, 100000))
 
-#def returnarrayindex(xvalue, yvalue):
-    #x = xvalue * 2 if xvalue >= 0 else xvalue * -2 - 1
-    #y = yvalue * 2 if yvalue >= 0 else yvalue * -2 - 1
-    #number = (x * x + x + y) if (x >= y) else (y * y + x)
-    #return number
-
 def returnarrayindex(xvalue, yvalue):
     x = xvalue
     y = yvalue
@@ -101,10 +91,8 @@ def returnarrayindex(xvalue, yvalue):
         y * y + x
     return number
 
-
 def gettopcorner():
     return [playerx - (SCREEN_WIDTH / 2) / BLOCK_WIDTH, playery - (SCREEN_HEIGHT / 2) / BLOCK_HEIGHT]
-
 
 def drawsquare(x, y, texture):
     topcornerdata = gettopcorner()
@@ -112,9 +100,9 @@ def drawsquare(x, y, texture):
     (x - topcornerdata[0]) * BLOCK_WIDTH, (y - topcornerdata[1]) * BLOCK_HEIGHT, BLOCK_WIDTH, BLOCK_HEIGHT)
     width = 0
     pygame.draw.rect(game_display, texture, dataforsquare, width)
-
-
-
+    
+    
+    
 class player(pygame.sprite.Sprite):
     def __init__(self, velocity, maxJumpRange):
         self.velocity = velocity
@@ -184,13 +172,11 @@ class player(pygame.sprite.Sprite):
             else:
                 self.y += self.velocity
 
-
     def draw(self):
         self.size = (20, 20)
         rect = pygame.Rect((self.x, self.y - self.jumpCounter), self.size)
         pygame.draw.rect(game_display, WHITE, rect)
-
-
+        
     def do(self):
         self.quit_game()
         self.no_up()
@@ -200,13 +186,10 @@ class player(pygame.sprite.Sprite):
         self.move()
         self.draw()
 
-
 P = player(2, 30)
 P.setLocation(HEIGHT_WIDTH, 0)
 
 jump_height = 50
-
-
 
 def main():
     """ Main Program """
